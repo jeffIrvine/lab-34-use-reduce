@@ -7,7 +7,7 @@ function App() {
 
   const undo = () => dispatch({ type: 'UNDO' });
   const redo = () => dispatch({ type: 'REDO' });
-  const record = () => dispatch({ type: 'RECORD' });
+  const record = (value) => dispatch({ type: 'RECORD', payload: value });
   
   return (
     <>
@@ -18,7 +18,7 @@ function App() {
         type="color" 
         data-testid="color-input" 
         value={state.current} 
-        onChange={({ target }) => dispatch({ type: record, payload: target.value })} 
+        onChange={({ target }) => record(target.value)} 
       />
 
       <div 
@@ -28,5 +28,5 @@ function App() {
     </>
   );
 }
-  
+
 export default App;
